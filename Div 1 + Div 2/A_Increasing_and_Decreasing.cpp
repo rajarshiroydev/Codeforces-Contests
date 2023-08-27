@@ -1,5 +1,3 @@
-// 1 4 3
-// x y n
 #include <bits/stdc++.h>
 using namespace std;
 #define endl '\n'
@@ -19,8 +17,9 @@ int main()
         for (int i = n - 2; i > 0; i--)
         {
             a[i] = y - j;
-            if (a[i] <= a[0])
+            if (a[i] < a[0])
                 flag = false;
+            if(a[i] == a[0]) a[0] = a[i];
             k++;
             j += k;
         }
