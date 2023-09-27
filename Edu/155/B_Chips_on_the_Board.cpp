@@ -170,34 +170,15 @@ int main() {
     for (ll i = 0; i < n; i++) {
       cin >> b[i];
     }
-    ll miniOne = a[0];
-    for (ll i = 0; i < n; i++) {
-      if (a[i] < miniOne)
-        miniOne = a[i];
+    ll miniRow = *min_element(a, a + n);
+    ll miniCol = *min_element(b, b + n);
+    ll sum1 = 0, sum2 = 0;
+    for (int i = 0; i < n; i++) {
+      sum1 += miniRow + b[i];
     }
-    ll miniTwo = b[0];
-    for (ll i = 0; i < n; i++) {
-      if (b[i] < miniTwo)
-        miniTwo = b[i];
+    for (int i = 0; i < n; i++) {
+      sum2 += miniCol + a[i];
     }
-    ll mini;
-    if (miniOne < miniTwo)
-      mini = miniOne;
-    else
-      mini = miniTwo;
-    // debug(mini);
-    ll sum = 0;
-    if (mini == miniOne) {
-      for (ll i = 0; i < n; i++) {
-        sum += mini + b[i];
-        //   debug(sum);
-      }
-    } else {
-      for (ll i = 0; i < n; i++) {
-        sum += mini + a[i];
-        //   debug(sum);
-      }
-    }
-    cout << sum << endl;
+    cout << min(sum1, sum2) << endl;
   }
 }

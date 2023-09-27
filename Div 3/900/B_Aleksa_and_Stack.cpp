@@ -26,9 +26,9 @@
  *  This is an implementation file for a precompiled header.
  */
 
-// 17.4.1.2 Headers
+ // 17.4.1.2 Headers
 
-// C
+ // C
 #ifndef _GLIBCXX_NO_ASSERT
 #include <cassert>
 #endif
@@ -153,29 +153,26 @@ using namespace std;
 
 //======================================================//
 
-int main() {
+int main()
+{
   ios_base::sync_with_stdio(0);
   cin.tie(0);
   cout.tie(0);
   int t;
   cin >> t;
-  while (t--) {
+  while (t--)
+  {
     int n;
     cin >> n;
-    ll a[n], b[n];
-    for (int i = 0; i < n; i++) {
-      cin >> a[i] >> b[i];
+    int i = 1;
+    while (n--)
+    {
+      if (n == 0)
+        cout << i;
+      else
+        cout << i << ' ';
+      i += 2;
     }
-    bool flag = true;
-    for (int i = 1; i < n; i++) {
-      if (a[i] >= a[0] && b[i] >= b[0]) {
-        flag = false;
-        break;
-      }
-    }
-    if (flag)
-      cout << a[0] << endl;
-    else
-      cout << -1 << endl;
+    cout << endl;
   }
 }
