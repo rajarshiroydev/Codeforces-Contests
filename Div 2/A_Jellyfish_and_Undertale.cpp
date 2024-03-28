@@ -14,12 +14,35 @@ template<typename S, typename T> void smin(S& a, const T& b) { if (a > b) a = b;
 #define rng_speed(x) mt19937 rng(x)
 #define all(x) (x).begin(), (x).end()
 #define sz(x) (int) (x).size()
-#define int long long
+#define ll long long
 
 const int MXN = 1e5 + 5, INF = 1e9 + 5;
 
 void solve() {
-    
+    ll a, b, n; cin >> a >> b >> n;
+
+    vector<ll> v(n);
+    for (int i = 0; i < n; i++) {
+        cin >> v[i];
+    }
+
+    sort(all(v));
+    ll sum = b;
+    ll ans = 0;
+    int i = 0;
+
+    for (i; i < n; i++) {
+        sum += v[i];
+        if (sum > a) {
+            ans += sum - v[i] - 1;
+            break;
+        }
+    }
+    for (i; i < n; i++) {
+        if (i == n - 1) ans += min(a, v[i] + b);
+        else ans += min(a, v[i] + b) - 1;
+    }
+    cout << ans << endl;
 }
 
 signed main() {
@@ -30,8 +53,3 @@ signed main() {
     cin >> TC;
     while (TC--) solve();
 }
-
-// 2 8 7 5
-// 2 7 8 5
-// 2 7 5 8
-// 2 5 7 8
